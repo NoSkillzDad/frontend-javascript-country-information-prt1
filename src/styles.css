@@ -80,6 +80,9 @@ footer {
         width: 935px;
         border-radius: 10px;
     }
+    #world-regions {
+        width: 900px;
+    }
 }
 
 @media screen and (max-width: 920px) {

@@ -2,11 +2,17 @@ const axios = require('axios').default; //using instead of import
 
 const getCountriesData = async () => {
     try {
+
+
         // const response = await axios.get('https://restcountries.com/v2/all?fields=name,population,flag'); //just gets the country name, flag and population
         const response = await axios.get('https://restcountries.com/v2/all');
         // console.log(response.data);
         // console.log(response.data[0].name);
-
+        //make map from the response.data
+        // const worldCountries = response.data.map((countryData) => {
+        //     return [countryData.name, countryData.population, countryData.region, countryData.flag, countryData.demonym];
+        // });
+        // console.log(worldCountries);
         sortBypopulation(response.data);
         getCountryDetails(response.data);
     } catch (error) {
@@ -74,7 +80,8 @@ const getColor = (region) => {
             return colorRegion.americas;
             break;
         }
-        default: return 'darkolivegreen';
+        default:
+            return 'darkolivegreen';
 
     }
 }
