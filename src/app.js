@@ -5,7 +5,10 @@ const getCountriesData = async () => {
         // const response = await axios.get('https://restcountries.com/v2/all'); //get all the country info
 
         // requesting only country name, population and flag
-        const response = await axios.get('https://restcountries.com/v2/all?fields=name,population,flag'); //just gets the country name, flag and population
+        // const response = await axios.get('https://restcountries.com/v2/all?fields=name,population,flag'); //just gets the country name, flag and population
+        const response = await axios.get('https://restcountries.com/v2/all');
+        // console.log(response.data);
+        // console.log(response.data[0].name);
         getCountryDetails(response.data);
     } catch (error) {
         // Handle Error Here
@@ -15,28 +18,59 @@ const getCountriesData = async () => {
 
 getCountriesData();
 
-//as defined in the axios page. -> async and await might have issues with older browsers
+const getCountryDetails = (countries) => {
+    const ul = document.getElementById("country-list");
+    for (let i = 0; i < countries.length; i++) {
+        const node = document.createElement("LI");
+        const imgNode = document.createElement("IMG");
+        imgNode.src = `${countries[i].flag}`;
+        imgNode.alt = `${countries[i].demonym} flag`;
+        const country = document.createElement("H4");
+        const textNode = document.createTextNode(` ${countries[i].name.toUpperCase()}.`);
+        country.appendChild(textNode);
+        country.style.color = getColor(countries[i].region);
+        const textNode2 = document.createTextNode("The population is: " + countries[i].population);
+        const node2 = document.createElement("BR");
+        node.appendChild(imgNode);
+        // node.appendChild(textNode);
+        node.appendChild(country);
+        node.appendChild(node2);
+        node.appendChild(textNode2);
+        node.style.display = 'inline-block';
+        document.getElementById("country-list").appendChild(node);
+    }
+}
 
-// axios.get("https://restcountries.com/v2/all")
-//     .then(function (response) {
-//         // console.log(response);
-//         getCountryDetails(response.data);
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     })
-//     .then(function () {
-//        console.log("hello");
-//     });
+const colorRegion = {
+    africa: 'blue',
+    americas: 'mediumseagreen',
+    asia: 'red',
+    europe: 'orange',
+    oceania: 'purple'
+};
 
-const getCountryDetails = (country) => {
-    for (let i = 0; i < country.length; i++) {
+const getColor = (region) => {
+    switch (region) {
+        case "Africa": {
+            return colorRegion.africa;
+            break;
+        }
+        case "Asia": {
+            return colorRegion.asia;
+            break;
+        }
+        case "Europe": {
+            return colorRegion.europe;
+            break;
+        }
+        case "Oceania": {
+            return colorRegion.oceania;
+        }
+        case "South America": {
+            return colorRegion.americas;
+            break;
+        }
+        default: return 'darkolivegreen';
 
-        //innerHTML
-
-        const container = document.getElementById("container");
-        container.innerHTML += `<div class="country"><h3>${country[i].name}</h3>` +
-            `<span>Population: ${country[i].population}</span><br>` +
-            `<img class="flag" src="${country[i].flag}" width="100px" heigh=auto></div>`;
     }
 }
