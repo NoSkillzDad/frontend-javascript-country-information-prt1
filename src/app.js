@@ -2,21 +2,25 @@ const axios = require('axios').default; //using instead of import
 
 const getCountriesData = async () => {
     try {
-        // const response = await axios.get('https://restcountries.com/v2/all'); //get all the country info
-
-        // requesting only country name, population and flag
         // const response = await axios.get('https://restcountries.com/v2/all?fields=name,population,flag'); //just gets the country name, flag and population
         const response = await axios.get('https://restcountries.com/v2/all');
         // console.log(response.data);
         // console.log(response.data[0].name);
+
+        sortBypopulation(response.data);
         getCountryDetails(response.data);
     } catch (error) {
-        // Handle Error Here
         console.error(error);
     }
 };
 
 getCountriesData();
+
+const sortBypopulation = (countries) => {
+    countries.sort((a, b) => {
+        return a.population - b.population;
+    });
+}
 
 const getCountryDetails = (countries) => {
     const ul = document.getElementById("country-list");
@@ -29,7 +33,7 @@ const getCountryDetails = (countries) => {
         const textNode = document.createTextNode(` ${countries[i].name.toUpperCase()}.`);
         country.appendChild(textNode);
         country.style.color = getColor(countries[i].region);
-        const textNode2 = document.createTextNode("The population is: " + countries[i].population);
+        const textNode2 = document.createTextNode(`Has a population of: ${countries[i].population} people.`);
         const node2 = document.createElement("BR");
         node.appendChild(imgNode);
         // node.appendChild(textNode);
