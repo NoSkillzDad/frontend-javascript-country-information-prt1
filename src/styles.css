@@ -68,3 +68,33 @@ footer {
     font-size: smaller;
     color: #6B6B6B;
 }
+
+@media screen and (max-width: 1410px) {
+    .container {
+        width: 935px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .countries {
+        width: 935px;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .container {
+        width: 470px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .countries {
+        width: 470px;
+        border-radius: 10px;
+    }
+    #world-regions {
+        width: 475px;
+    }
+}
