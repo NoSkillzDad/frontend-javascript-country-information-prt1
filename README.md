@@ -80,3 +80,5 @@ onderstaand stappenplan gebruiken:
 **Bonusopdrachten**
 - Lees paragraaf 8.2 op EdHub door en kijk hoe je dit kunt toepassen in deze opdracht;
 - Make it look nice! 😍
+
+`https://github.com/hogeschoolnovi/frontend-javascript-country-information-prt1`

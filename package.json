@@ -10,6 +10,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "parcel src/index.html",
+    "search": "parcel src/search.html",
     "build": "parcel build src/index.html"
   },
   "author": "",
