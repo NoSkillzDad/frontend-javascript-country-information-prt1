@@ -3,7 +3,7 @@ const axios = require('axios').default
 const getCountryDetails = async (country) => {
     try {
         const response = await axios.get(`https://restcountries.com/v3.1/name/${country}`);
-        console.log(response);
+        // console.log(response);
         showCountryDetails(response.data[0]);
         // if (response.data[0]) {
         //     showCountryDetails(response.data[0]);
@@ -16,8 +16,8 @@ const getCountryDetails = async (country) => {
 }
 
 const input = document.getElementById("search-term");
-input.addEventListener("keyup", function(event) {
-    if (event.key === 'Enter' ) {
+input.addEventListener("keyup", function (event) {
+    if (event.key === 'Enter') {
         // Cancel the default action, if needed
         event.preventDefault();
         // Trigger the button element with a click
@@ -25,40 +25,37 @@ input.addEventListener("keyup", function(event) {
     }
 });
 
-const searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", () => {
-    clearContent('country-details');
-    const country = document.getElementById("search-term").value;
-    if (country) {
-        document.getElementById("search-term").value = "";
-        getCountryDetails(country)
-    } else {
-        console.error("invalid search term");
-        errorMessage();
+
+const myJoin = (wArray) => {
+    let string = "";
+    for (let i = 0; i < wArray.length - 1; i++) {
+        string += wArray[i].name + ",";
     }
-});
-
-const clearContent = (elementID) => {
-
-    for (let i = 1; i <= 10; i++) {
-        document.getElementById(elementID).style.opacity = (10 - i) / 10;
-    }
-    document.getElementById(elementID).style.visibility = "hidden";
-    document.getElementById(elementID).style.transition = "visibility 10s, opacity 1s ease-in-out";
-    document.getElementById(elementID).innerHTML = "";
-}
-
-const errorMessage = () => {
-    const countryDiv = document.getElementById("country-details");
-    const errorText = document.createTextNode("Invalid Search Term. Try Again!");
-    countryDiv.appendChild(errorText);
+    string += wArray[wArray.length - 1].name;
+    return string;
 }
 
 const showCountryDetails = (country) => {
 
-    const currency = Object.getOwnPropertyNames(country.currencies)[0];
-    const currencyName = Object.getOwnPropertyDescriptor(country.currencies, Object.getOwnPropertyNames(country.currencies)[0]).value;
-    const language = Object.getOwnPropertyDescriptor(country.languages, Object.getOwnPropertyNames(country.languages)[0]).value;
+
+    const currencyName = Object.getOwnPropertyDescriptor(country.currencies, Object.getOwnPropertyNames(country.currencies)[0]).value.name;
+
+    const newCurr = (Object.values(country.currencies));
+
+    const currency = stringFormatter(myJoin(newCurr));
+
+    // console.log(myJoin(newCurr));
+
+
+    // const currency = Object.getOwnPropertyNames(country.currencies)[0];
+    // console.log(Object.getOwnPropertyDescriptor(country.currencies, Object.getOwnPropertyNames(country.currencies)[0]));
+    // console.log(currencyName.name);
+    // console.log(country.currencies.CUC.name);
+    // console.log(Object.getOwnPropertyNames(country.currencies)[0]);
+    // const language = Object.getOwnPropertyDescriptor(country.languages, Object.getOwnPropertyNames(country.languages)[0]).value;
+
+    let language = Object.values(country.languages).toString();
+    language = stringFormatter(language);
 
     const countryDiv = document.getElementById("country-details");
 
@@ -66,7 +63,7 @@ const showCountryDetails = (country) => {
     node.className = "country-det-div";
 
     const imgNode = document.createElement("IMG");
-    imgNode.src = `${country.flags.png}`;
+    imgNode.src = `${country.flags.svg}`;
     imgNode.alt = `${country.demonym} flag`;
     imgNode.width = 200;
     imgNode.style.display = "block";
@@ -85,8 +82,14 @@ const showCountryDetails = (country) => {
     const textNode2 = document.createTextNode(`${country.name.common} is situated in ${country.subregion}. It has a population of ${new Intl.NumberFormat().format(country.population)} people.`);
     const node2 = document.createElement("BR");
     const node3 = document.createElement("BR");
-    const textNode3 = document.createTextNode(`The capital is ${country.capital[0]} and you can pay with ${currency}.`);
+    const textNode3 = document.createTextNode(`The capital is ${country.capital[0]} and you can pay with ${currency}'s.`);
     const textNode4 = document.createTextNode(`They speak ${language}.`);
+
+
+    // const textNode4 = document.createTextNode(`They speak ${language}.`);
+    // const textNode4 = document.createTextNode(`They speak ${Object.values(country.languages)}.`);
+    // const textNode4 = document.createTextNode(`They speak ${Object.values(country.languages).toString()}.`);
+    // const textNode4 = document.createTextNode(`They speak ${JSON.stringify(Object.values(country.languages), null, 1)}.`);
 
     node.appendChild(imgNode);
     node.appendChild(divider);
@@ -111,3 +114,54 @@ const showCountryDetails = (country) => {
     // console.log(country.capital[0]);
 }
 
+const errorMessage = () => {
+    const countryDiv = document.getElementById("country-details");
+    const errorText = document.createTextNode("Invalid Search Term. Try Again!");
+    countryDiv.appendChild(errorText);
+}
+
+const stringFormatter = (string) => {
+    let count = 0;
+    count = (string.match(/,/g) || []).length;
+    switch (count) {
+        case 0: {
+            return string;
+            break;
+        }
+        case 1: {
+            return string.replaceAll(',', " and ");
+            break;
+        }
+        default: {
+            const langs = string.split(",");
+            let newString = "";
+            for (let i = 0; i < count - 1; i++) {
+                newString = langs[i] + ", ";
+            }
+            newString += langs[count - 1] + " and " + langs[count];
+            return newString;
+        }
+    }
+}
+
+const clearContent = (elementID) => {
+    for (let i = 1; i <= 10; i++) {
+        document.getElementById(elementID).style.opacity = (10 - i) / 10;
+    }
+    document.getElementById(elementID).style.visibility = "hidden";
+    document.getElementById(elementID).style.transition = "visibility 10s, opacity 1s ease-in-out";
+    document.getElementById(elementID).innerHTML = "";
+}
+
+const searchButton = document.getElementById("search-button");
+searchButton.addEventListener("click", () => {
+    clearContent('country-details');
+    const country = document.getElementById("search-term").value;
+    if (country) {
+        document.getElementById("search-term").value = "";
+        getCountryDetails(country)
+    } else {
+        console.error("invalid search term");
+        errorMessage();
+    }
+});
