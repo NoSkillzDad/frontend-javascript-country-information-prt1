@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Country Information - World Regions</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app.js"></script>
+    <title>Countries of the world</title>
 </head>
 <body>
+<div class="topnav">
+    <ul class="menu">
+        <li></li>
+        <li><h1>Countries of the World</h1></li>
+<!--    </ul>-->
+<!--    <ul class="right">-->
+        <li class = "nav-button">Country details
+            <button class="searchpage" id="search-page-button">
+            <svg class="svg-icon1" viewBox="0 0 20 20">
+                <path fill="none" d="M19.129,18.164l-4.518-4.52c1.152-1.373,1.852-3.143,1.852-5.077c0-4.361-3.535-7.896-7.896-7.896
+								c-4.361,0-7.896,3.535-7.896,7.896s3.535,7.896,7.896,7.896c1.934,0,3.705-0.698,5.078-1.853l4.52,4.519
+								c0.266,0.268,0.699,0.268,0.965,0C19.396,18.863,19.396,18.431,19.129,18.164z M8.567,15.028c-3.568,0-6.461-2.893-6.461-6.461
+								s2.893-6.461,6.461-6.461c3.568,0,6.46,2.893,6.46,6.461S12.135,15.028,8.567,15.028z"></path>
+            </svg>
+        </button></li>
+        <script type="text/javascript">
+            document.getElementById("search-page-button").onclick = function () {
+                location.href = "search.html";
+            };
+        </script>
+    </ul>
+</div>
 
+<div class="container" id="container">
+    <!--    <a href="search.html">-->
+    <img id="world-regions" src="assets/world_map.png" width="1200" height=auto alt="World Regions">
+    <script type="text/javascript">
+        document.getElementById("world-regions").onclick = function () {
+            location.href = "search.html";
+        };
+    </script>
+    <!--    </a>-->
+    <div class="countries" id="countries">
+        <ul class="country-list" id="country-list"></ul>
+    </div>
+    <footer>This page uses https://restcountries.com/ API</footer>
+</div>
 </body>
 </html>

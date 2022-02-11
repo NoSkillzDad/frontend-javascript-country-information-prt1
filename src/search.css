@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #f2f2f2;
+
+}
+
+h1 {
+    padding: 10px;
+    margin: 20px auto 20px auto;
+}
+
+img {
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 1200px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.search {
+    width: 640px;
+    height: 40px;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 640px;
+    height: 36px;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    /*color: #9DBFAF;*/
+    color: #9DBFAF;
+}
+
+.searchTerm:focus{
+    color: #001e3a;
+}
+
+.searchTerm::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #317be0;
+    opacity: 1; /* Firefox */
+}
+
+.searchTerm:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #317be0;
+}
+
+.searchTerm::-ms-input-placeholder { /* Microsoft Edge */
+    color:#317be0;
+}
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.country-details {
+    /*display: none;*/
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s ease-in-out;
+
+
+    border-radius: 15px;
+    box-shadow: 15px 20px 20px 3px #888888;
+    line-height: 1.5;
+    width: 600px;
+    /*height: 300px;*/
+    margin: 25px;
+    padding: 20px;
+    background: lightgrey;
+}
+
+.svg-icon {
+    width: 1em;
+    height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #def2fd;
+}
+
+.svg-icon circle {
+    stroke: #def2fd;
+    stroke-width: 2px;
+}
+
+@media screen and (max-width: 1410px) {
+    .container {
+        width: 935px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .container {
+        width: 470px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

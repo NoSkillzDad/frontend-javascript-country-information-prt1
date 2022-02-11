@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1 {
+    padding: 10px;
+    margin: 20px auto 20px auto;
+}
+
+.container {
+    width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+}
+
+#world-regions {
+    margin: auto;
+}
+
+.countries {
+    width: 1400px;
+    background: hsl(26, 31%, 84%);
+    border-radius: 10px;
+}
+
+.country-list {
+    list-style: none;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.country-list li h4 {
+    display: inline-block;
+    font-weight: bold;
+}
+
+
+.country-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 450px;
+    border: 2px solid #6B6B6B;
+    background: hsl(31, 51%, 92%);
+    border-radius: 5px;
+    margin: 3px 0 3px 6px;
+    padding: 2px;
+}
+
+.country-list img {
+    height: 20px;
+    width: auto;
+}
+
+img {
+    width: 950px;
+    margin: auto;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: smaller;
+    color: #6B6B6B;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+.svg-icon1 {
+    width: 2em;
+    height: 2em;
+}
+
+.topnav ul {
+    width: 1400px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.menu li {
+    justify-content: center;
+    align-content: center;
+    margin-right: 20px;
+}
+
+.nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchpage {
+    margin-left: 10px;
+}
+
+.searchpage:hover {
+    cursor: pointer;
+}
+
+.svg-icon1 path,
+.svg-icon1 polygon,
+.svg-icon1 rect {
+    fill: #6B6B6B;
+}
+
+.svg-icon1 circle {
+    stroke: #6B6B6B;
+    stroke-width: 4;
+}
+
+#search-page-button {
+    background: hsl(26, 31%, 84%);
+    padding: 3px;
+}
+
+
+@media screen and (max-width: 1410px) {
+    .container {
+        width: 935px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .topnav ul {
+        width: 935px;
+    }
+
+    .countries {
+        width: 935px;
+        border-radius: 10px;
+    }
+
+    #world-regions {
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .container {
+        width: 470px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .topnav ul {
+        width: 470px;
+    }
+
+    .countries {
+        width: 470px;
+        border-radius: 10px;
+    }
+
+    #world-regions {
+        width: 475px;
+    }
+}
