@@ -46,11 +46,25 @@ img {
     padding: 5px;
     border-radius: 5px 0 0 5px;
     outline: none;
+    /*color: #9DBFAF;*/
     color: #9DBFAF;
 }
 
 .searchTerm:focus{
-    color: #00B4CC;
+    color: #001e3a;
+}
+
+.searchTerm::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #317be0;
+    opacity: 1; /* Firefox */
+}
+
+.searchTerm:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #317be0;
+}
+
+.searchTerm::-ms-input-placeholder { /* Microsoft Edge */
+    color:#317be0;
 }
 
 .searchButton {

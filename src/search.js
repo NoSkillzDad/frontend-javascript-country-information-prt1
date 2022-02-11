@@ -2,14 +2,12 @@ const axios = require('axios').default
 
 const getCountryDetails = async (country) => {
     try {
-        const response = await axios.get(`https://restcountries.com/v3.1/name/${country}`);
-        // console.log(response);
+        // const response = await axios.get(`https://restcountries.com/v3.1/name/${country}`);
+        // const response = await axios.get(`https://restcountries.com/v3.1/name/${country}?fields=name,capital,currencies,population,languages,subregion,flags`);
+        const response = await axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true&&fields=name,capital,currencies,population,languages,subregion,flags`);
+
+        console.log(response);
         showCountryDetails(response.data[0]);
-        // if (response.data[0]) {
-        //     showCountryDetails(response.data[0]);
-        // } else {
-        //     errorMessage();
-        // }
     } catch (error) {
         console.error(error);
     }
@@ -25,7 +23,6 @@ input.addEventListener("keyup", function (event) {
     }
 });
 
-
 const myJoin = (wArray) => {
     let string = "";
     for (let i = 0; i < wArray.length - 1; i++) {
@@ -37,13 +34,9 @@ const myJoin = (wArray) => {
 
 const showCountryDetails = (country) => {
 
-
-    const currencyName = Object.getOwnPropertyDescriptor(country.currencies, Object.getOwnPropertyNames(country.currencies)[0]).value.name;
-
+    // const currencyName = Object.getOwnPropertyDescriptor(country.currencies, Object.getOwnPropertyNames(country.currencies)[0]).value.name;
     const newCurr = (Object.values(country.currencies));
-
     const currency = stringFormatter(myJoin(newCurr));
-
     // console.log(myJoin(newCurr));
 
 
