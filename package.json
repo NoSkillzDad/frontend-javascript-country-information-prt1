@@ -10,7 +10,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "search": "parcel src/search.html",
-    "build": "parcel build src/index.html src/search.html --public-url ./ --no-source-maps"
+    "build": "parcel build src/*.html --public-url ./"
   },
   "author": "",
   "license": "ISC"
