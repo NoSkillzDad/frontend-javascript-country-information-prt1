@@ -1,5 +1,5 @@
 {
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.25.0",
     "parcel": "^2.2.1",
     "parcel-plugin-nuke-dist": "^1.0.1"
@@ -7,7 +7,6 @@
   "name": "world-data",
   "description": "to get\r country name - all \r country flag\r number of inhabitants",
   "version": "1.0.0",
-  "main": "src/app.js",
   "scripts": {
     "start": "parcel src/index.html",
     "search": "parcel src/search.html",
