@@ -5,8 +5,7 @@ const getCountryDetails = async (country) => {
         // const response = await axios.get(`https://restcountries.com/v3.1/name/${country}`);
         // const response = await axios.get(`https://restcountries.com/v3.1/name/${country}?fields=name,capital,currencies,population,languages,subregion,flags`);
         const response = await axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true&&fields=name,capital,currencies,population,languages,subregion,flags`);
-
-        console.log(response);
+        // console.log(response);
         showCountryDetails(response.data[0]);
     } catch (error) {
         console.error(error);
