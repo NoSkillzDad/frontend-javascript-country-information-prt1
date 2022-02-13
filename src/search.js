@@ -2,10 +2,7 @@ const axios = require('axios').default
 
 const getCountryDetails = async (country) => {
     try {
-        // const response = await axios.get(`https://restcountries.com/v3.1/name/${country}`);
-        // const response = await axios.get(`https://restcountries.com/v3.1/name/${country}?fields=name,capital,currencies,population,languages,subregion,flags`);
         const response = await axios.get(`https://restcountries.com/v3.1/name/${country}?fullText=true&&fields=name,capital,currencies,population,languages,subregion,flags`);
-        // console.log(response);
         showCountryDetails(response.data[0]);
     } catch (error) {
         console.error(error);
@@ -15,9 +12,7 @@ const getCountryDetails = async (country) => {
 const input = document.getElementById("search-term");
 input.addEventListener("keyup", function (event) {
     if (event.key === 'Enter') {
-        // Cancel the default action, if needed
         event.preventDefault();
-        // Trigger the button element with a click
         document.getElementById("search-button").click();
     }
 });
@@ -33,18 +28,8 @@ const myJoin = (wArray) => {
 
 const showCountryDetails = (country) => {
 
-    // const currencyName = Object.getOwnPropertyDescriptor(country.currencies, Object.getOwnPropertyNames(country.currencies)[0]).value.name;
     const newCurr = (Object.values(country.currencies));
     const currency = stringFormatter(myJoin(newCurr));
-    // console.log(myJoin(newCurr));
-
-
-    // const currency = Object.getOwnPropertyNames(country.currencies)[0];
-    // console.log(Object.getOwnPropertyDescriptor(country.currencies, Object.getOwnPropertyNames(country.currencies)[0]));
-    // console.log(currencyName.name);
-    // console.log(country.currencies.CUC.name);
-    // console.log(Object.getOwnPropertyNames(country.currencies)[0]);
-    // const language = Object.getOwnPropertyDescriptor(country.languages, Object.getOwnPropertyNames(country.languages)[0]).value;
 
     let language = Object.values(country.languages).toString();
     language = stringFormatter(language);
@@ -77,12 +62,6 @@ const showCountryDetails = (country) => {
     const textNode3 = document.createTextNode(`The capital is ${country.capital[0]} and you can pay with ${currency}'s.`);
     const textNode4 = document.createTextNode(`They speak ${language}.`);
 
-
-    // const textNode4 = document.createTextNode(`They speak ${language}.`);
-    // const textNode4 = document.createTextNode(`They speak ${Object.values(country.languages)}.`);
-    // const textNode4 = document.createTextNode(`They speak ${Object.values(country.languages).toString()}.`);
-    // const textNode4 = document.createTextNode(`They speak ${JSON.stringify(Object.values(country.languages), null, 1)}.`);
-
     node.appendChild(imgNode);
     node.appendChild(divider);
     node.appendChild(countryName);
@@ -95,15 +74,7 @@ const showCountryDetails = (country) => {
     countryDiv.appendChild(node);
     countryDiv.style.visibility = "visible";
     countryDiv.style.opacity = 1;
-
     countryDiv.style.display = "block";
-
-    // console.log(country.name.common);
-    // console.log(country.population);
-    // console.log(country.subregion);
-    // console.log(Object.getOwnPropertyDescriptor(country.languages, Object.getOwnPropertyNames(country.languages)[0]).value);
-    // console.log(Object.getOwnPropertyNames(country.currencies)[0]);
-    // console.log(country.capital[0]);
 }
 
 const errorMessage = () => {

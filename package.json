@@ -8,10 +8,12 @@
   "description": "to get\r country name - all \r country flag\r number of inhabitants",
   "version": "1.0.0",
   "scripts": {
+    "clean": "rimraf dist",
     "start": "parcel src/index.html",
     "search": "parcel src/search.html",
-    "build": "parcel build src/*.html --public-url ./"
+    "build": "npm run clean && parcel build ./src/*.html --public-url ./"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Alejandro Peralta",
+  "license": "ISC",
+  "homepage": "https://world-countries-info-ap.netlify.app/"
 }
