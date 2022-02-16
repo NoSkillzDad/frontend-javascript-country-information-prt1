@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/df293519-abe7-49c7-996c-a7be26ffbf07/deploy-status)](https://app.netlify.com/sites/world-countries-info-ap/deploys)
 # Opdrachtbeschrijving
 
 ## Inleiding
@@ -80,3 +81,6 @@ onderstaand stappenplan gebruiken:
 **Bonusopdrachten**
 - Lees paragraaf 8.2 op EdHub door en kijk hoe je dit kunt toepassen in deze opdracht;
 - Make it look nice! 😍
+
+`https://github.com/hogeschoolnovi/frontend-javascript-country-information-prt1`
+`https://github.com/hogeschoolnovi/frontend-javascript-country-information-prt2`
