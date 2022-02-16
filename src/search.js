@@ -40,13 +40,15 @@ const showCountryDetails = (country) => {
     node.className = "country-det-div";
 
     const imgNode = document.createElement("IMG");
-    imgNode.src = `${country.flags.svg}`;
+    imgNode.src = `${country.flags.png}`;
     imgNode.alt = `${country.demonym} flag`;
     imgNode.width = 200;
     imgNode.style.display = "block";
     imgNode.style.marginLeft = "auto";
     imgNode.style.marginRight = "auto";
     imgNode.style.marginBottom = "20px";
+    imgNode.style.boxShadow = "10px 10px 5px rgba(0, 0, 0, 0.5)";
+    imgNode.style.borderRadius = "10px";
 
     const divider = document.createElement("HR");
 

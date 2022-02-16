@@ -83,3 +83,4 @@ onderstaand stappenplan gebruiken:
 - Make it look nice! 😍
 
 `https://github.com/hogeschoolnovi/frontend-javascript-country-information-prt1`
+`https://github.com/hogeschoolnovi/frontend-javascript-country-information-prt2`
